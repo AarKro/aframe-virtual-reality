@@ -1,8 +1,8 @@
-const vector3ToString = (vector) => {
-  return `${vector.getComponent(0)} ${vector.getComponent(1)} ${vector.getComponent(2)}`;
+const vector3ToString = (vector, percision = 2) => {
+  return `${vector.getComponent(0).toFixed(percision)} ${vector.getComponent(1).toFixed(percision)} ${vector.getComponent(2).toFixed(percision)}`;
 }
 
-AFRAME.registerComponent('return-grab', {
+AFRAME.registerComponent('rewind-grab', {
   init: function () {
     this.system = this.el.sceneEl.systems.physics;
 
@@ -12,6 +12,7 @@ AFRAME.registerComponent('return-grab', {
     this.hitEl =         /** @type {AFRAME.Element}    */ null;
     this.physics =       /** @type {AFRAME.System}     */ this.el.sceneEl.systems.physics;
     this.constraint =    /** @type {CANNON.Constraint} */ null;
+    this.stage =                                          null;
 
     // Bind event handlers
     this.onHit = this.onHit.bind(this);
@@ -28,6 +29,17 @@ AFRAME.registerComponent('return-grab', {
     el.addEventListener('trackpadup', this.onGripOpen);
     el.addEventListener('triggerdown', this.onGripClose);
     el.addEventListener('triggerup', this.onGripOpen);
+
+    const stageEl = document.getElementById('stage')
+    const stagePos = stageEl.getAttribute('position');
+    const stageWidth = stageEl.getAttribute('width');
+    const stageDepth = stageEl.getAttribute('depth');
+    this.stage = {
+      x: stagePos.getComponent(0) - (Number(stageWidth) / 2),
+      z: stagePos.getComponent(2) - (Number(stageDepth) / 2),
+      width: Number(stageWidth),
+      depth: Number(stageDepth),
+    }
   },
 
   pause: function () {
@@ -50,10 +62,27 @@ AFRAME.registerComponent('return-grab', {
     this.grabbing = false;
     if (!hitEl) { return; }
     hitEl.removeState(this.GRABBED_STATE);
-    hitEl.emit(`startReturnTransition`, null, false);
-    this.hitEl = undefined;
     this.system.removeConstraint(this.constraint);
     this.constraint = null;
+
+    const hitElCurrentPos = hitEl.getAttribute('position');
+    const hitElX = hitElCurrentPos.getComponent(0);
+    const hitElZ = hitElCurrentPos.getComponent(2);
+    if (
+      !(
+           (hitElX >= this.stage.x && hitElX <= (this.stage.x + this.stage.width))
+        && (hitElZ >= this.stage.z && hitElZ <= (this.stage.z + this.stage.depth))
+      )
+    ) {
+      const physicsComponent = hitEl.components['dynamic-body'];
+      physicsComponent.pause();
+      hitEl.emit('start-return-transition', null, false);
+      setTimeout(() => {
+        physicsComponent.play();
+      }, 500);
+    }
+
+    this.hitEl = undefined;
   },
 
   onHit: function (evt) {
@@ -62,8 +91,16 @@ AFRAME.registerComponent('return-grab', {
     // If the hand is not grabbing the element does not stick.
     // If we're already grabbing something you can't grab again.
     if (hitEl.is(this.GRABBED_STATE) || !this.grabbing || this.hitEl) { return; }
+    
     const hitElCurrentPos = hitEl.getAttribute('position');
-    hitEl.setAttribute('returnTransition', {'property': 'position', 'to': vector3ToString(hitElCurrentPos), 'startEvents': 'startReturnTransition'});
+    const posSnapshot = vector3ToString(hitElCurrentPos);
+    hitEl.setAttribute('animation__rewind', {
+      'property': 'position', 
+      'to': posSnapshot, 
+      'dur': '500',
+      'startEvents': 'start-return-transition'
+    });
+
     hitEl.addState(this.GRABBED_STATE);
     this.hitEl = hitEl;
     this.constraint = new CANNON.LockConstraint(this.el.body, hitEl.body);
