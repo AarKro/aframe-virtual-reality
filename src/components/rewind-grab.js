@@ -1,7 +1,3 @@
-const vector3ToString = (vector, percision = 2) => {
-  return `${vector.getComponent(0).toFixed(percision)} ${vector.getComponent(1).toFixed(percision)} ${vector.getComponent(2).toFixed(percision)}`;
-}
-
 AFRAME.registerComponent('rewind-grab', {
   init: function () {
     this.system = this.el.sceneEl.systems.physics;
@@ -9,10 +5,10 @@ AFRAME.registerComponent('rewind-grab', {
     this.GRABBED_STATE = 'grabbed';
 
     this.grabbing = false;
-    this.hitEl =         /** @type {AFRAME.Element}    */ null;
-    this.physics =       /** @type {AFRAME.System}     */ this.el.sceneEl.systems.physics;
-    this.constraint =    /** @type {CANNON.Constraint} */ null;
-    this.stage =                                          null;
+    this.hitEl = null;
+    this.physics = this.el.sceneEl.systems.physics;
+    this.constraint = null;
+    this.stage = null;
 
     // Bind event handlers
     this.onHit = this.onHit.bind(this);
@@ -76,7 +72,7 @@ AFRAME.registerComponent('rewind-grab', {
     ) {
       const physicsComponent = hitEl.components['dynamic-body'];
       physicsComponent.pause();
-      hitEl.emit('start-return-transition', null, false);
+      hitEl.emit('start-rewind', null, false);
       setTimeout(() => {
         physicsComponent.play();
       }, 500);
@@ -98,7 +94,7 @@ AFRAME.registerComponent('rewind-grab', {
       'property': 'position', 
       'to': posSnapshot, 
       'dur': '500',
-      'startEvents': 'start-return-transition'
+      'startEvents': 'start-rewind'
     });
 
     hitEl.addState(this.GRABBED_STATE);
