@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Virtual Reality</title>
+  <title>Potato Dress Up</title>
 
   <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
@@ -17,7 +17,8 @@
   <a-scene physics="debug: true">
     <!-- assets -->
     <a-assets>
-      <a-asset-item id="potato" src="./src/assets/UV__Potato_v1.gltf"></a-asset-item>
+      <!-- <a-asset-item id="potato" src="./src/assets/UV__Potato_v1.gltf"></a-asset-item> -->
+      <a-asset-item id="potato" src="./src/assets/MainMesh.gltf"></a-asset-item>
     </a-assets>
 
     <!-- controlls -->
@@ -47,9 +48,9 @@
     <a-entity id="potato" gltf-model="#potato" position="2 1 -2" rotation="0 90 0"></a-entity>
     <!-- <a-box id="hat" static-body position="1.65 1.6 -2" width="0.3" height="0.3" depth="0.3" color="cyan"></a-box> -->
     
-    <a-box class="grabbable" sphere-collider="objects: .stage-hitbox;" dynamic-body position="-2 1 -1" width="0.3" height="0.3" depth="0.3" color="red"></a-box>
-    <a-box class="grabbable" sphere-collider="objects: .stage-hitbox;" dynamic-body position="-2 1 -2" width="0.3" height="0.3" depth="0.3" color="yellow"></a-box>
-    <a-box class="grabbable" sphere-collider="objects: .stage-hitbox;" dynamic-body position="-2 1 -3" width="0.3" height="0.3" depth="0.3" color="blue"></a-box>
+    <a-box class="grabbable" dynamic-body position="-2 1 -1" width="0.3" height="0.3" depth="0.3" color="red"></a-box>
+    <a-box class="grabbable" dynamic-body position="-2 1 -2" width="0.3" height="0.3" depth="0.3" color="yellow"></a-box>
+    <a-box class="grabbable" dynamic-body position="-2 1 -3" width="0.3" height="0.3" depth="0.3" color="blue"></a-box>
 
     <!-- lighting -->
     <a-entity light="type: point; color: #f4f4f4; intensity: 0.2; distance: 0" position="8 10 18"></a-entity>
