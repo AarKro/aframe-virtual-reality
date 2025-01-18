@@ -105,7 +105,6 @@ AFRAME.registerComponent('rewind-grab', {
       'startEvents': 'start-rewind-position'
     });
     const targetRotation = hitEl.getAttribute('data-orig-rotation') || '0 0 0';
-    console.log(targetRotation)
     hitEl.setAttribute('animation__rewind-rotation', {
       'property': 'rotation', 
       'to': targetRotation, 
