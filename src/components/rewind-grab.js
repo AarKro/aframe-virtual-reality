@@ -28,14 +28,16 @@ AFRAME.registerComponent('rewind-grab', {
 
     const stageEl = document.getElementById('stage')
     const stagePos = stageEl.getAttribute('position');
-    const stageWidth = 2.4;
-    const stageDepth = 2.4;
+    const stageWidth = 3;
+    const stageDepth = 3;
     this.stage = {
       x: stagePos.getComponent(0) - (Number(stageWidth) / 2),
       z: stagePos.getComponent(2) - (Number(stageDepth) / 2),
       width: Number(stageWidth),
       depth: Number(stageDepth),
     }
+
+    console.log(this.stage)
   },
 
   pause: function () {
