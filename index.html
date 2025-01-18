@@ -17,11 +17,14 @@
   <a-scene physics="debug: true">
     <!-- assets -->
     <a-assets>
-      <!-- <a-asset-item id="potato" src="./src/assets/UV__Potato_v1.gltf"></a-asset-item> -->
       <a-asset-item id="potatoModel" src="./src/assets/potato.gltf"></a-asset-item>
       <a-asset-item id="stageModel" src="./src/assets/stage.gltf"></a-asset-item>
       <a-asset-item id="tableModel" src="./src/assets/table.gltf"></a-asset-item>
       <a-asset-item id="roomModel" src="./src/assets/room.gltf"></a-asset-item>
+      <a-asset-item id="hatAModel" src="./src/assets/Hut_A.gltf"></a-asset-item>
+      <a-asset-item id="hatBModel" src="./src/assets/Hut_B.gltf"></a-asset-item>
+      <a-asset-item id="monocleAModel" src="./src/assets/Monokel1.gltf"></a-asset-item>
+      <a-asset-item id="glassesRedModel" src="./src/assets/Brille_Rot.gltf"></a-asset-item>
     </a-assets>
 
     <!-- controlls -->
@@ -46,9 +49,7 @@
     <a-entity id="potato" gltf-model="#potatoModel" position="4 1.75 -2" rotation="0 90 0"></a-entity>
     
     <!-- clothing & accessories -->
-    <a-box class="grabbable" dynamic-body position="-5 1.5 -1" data-orig-pos="-5 1.5 -1" data-potato-pos="3.68 2.3 -2" width="0.3" height="0.3" depth="0.3" color="red"></a-box>
-    <a-box class="grabbable" dynamic-body position="-5 1.5 -2" data-orig-pos="-5 1.5 -2" data-potato-pos="3.68 2.3 -2" width="0.3" height="0.3" depth="0.3" color="yellow"></a-box>
-    <a-box class="grabbable" dynamic-body position="-5 1.5 -3" data-orig-pos="-5 1.5 -3" data-potato-pos="3.68 2.3 -2" width="0.3" height="0.3" depth="0.3" color="blue"></a-box>
+    <a-entity gltf-model="#hatAModel" body="type: dynamic; mass: 5; shape: none;" shape__main="shape: box; halfExtents: 0.2 0.2 0.2; offset: 0 0.08 0" position="-5 1.5 -1" data-orig-pos="-5 1.5 -1" data-potato-pos="3.68 2.3 -2"></a-entity>
     
     <!-- environemnt -->
     <a-box id="room" gltf-model="#roomModel" body="type: static; mass: 0; shape: none;" shape__main="shape: box; halfExtents: 10 .5 10; offset: 0 -5.1 0" position="0 4 0" rotation="0 -90 0"></a-box>
