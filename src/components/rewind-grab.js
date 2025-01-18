@@ -73,12 +73,14 @@ AFRAME.registerComponent('rewind-grab', {
         && (hitElZ >= this.stage.z && hitElZ <= (this.stage.z + this.stage.depth))
       )
     ) {
-      hitEl.emit('start-rewind', null, false);
+      hitEl.emit('start-rewind-position', null, false);
+      hitEl.emit('start-rewind-rotation', null, false);
       setTimeout(() => {
         physicsComponent.play();
       }, 500);
     } else {
-      hitEl.setAttribute('position', '1.65 1.6 -2');
+      const targetPos = hitEl.getAttribute('data-potato-pos');
+      hitEl.setAttribute('position', targetPos);
       hitEl.setAttribute('rotation', '0 0 0');
     }
 
@@ -92,13 +94,18 @@ AFRAME.registerComponent('rewind-grab', {
     // If we're already grabbing something you can't grab again.
     if (hitEl.is(this.GRABBED_STATE) || !this.grabbing || this.hitEl) { return; }
     
-    const hitElCurrentPos = hitEl.getAttribute('position');
-    const posSnapshot = vector3ToString(hitElCurrentPos);
-    hitEl.setAttribute('animation__rewind', {
+    const hitElPosSnapshot = hitEl.getAttribute('data-orig-pos');
+    hitEl.setAttribute('animation__rewind-position', {
       'property': 'position', 
-      'to': posSnapshot, 
+      'to': hitElPosSnapshot, 
       'dur': '500',
-      'startEvents': 'start-rewind'
+      'startEvents': 'start-rewind-position'
+    });
+    hitEl.setAttribute('animation__rewind-rotation', {
+      'property': 'rotation', 
+      'to': '0 0 0', 
+      'dur': '500',
+      'startEvents': 'start-rewind-rotation'
     });
 
     hitEl.addState(this.GRABBED_STATE);

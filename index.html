@@ -39,18 +39,18 @@
       <a-entity static-body="shape: sphere; sphereRadius: 0.02;" hand-controls="hand: right" sphere-collider="objects: .grabbable;" rewind-grab></a-entity>
     </a-entity>
 
-    <!-- objects -->
+    <!-- potato -->
+    <a-entity id="potato" gltf-model="#potato" position="2 1 -2" rotation="0 90 0"></a-entity>
+    
+    <!-- clothing & accessories -->
+    <a-box class="grabbable" dynamic-body position="-2 1 -1" data-orig-pos="-2 1 -1" data-potato-pos="1.65 1.6 -2" width="0.3" height="0.3" depth="0.3" color="red"></a-box>
+    <a-box class="grabbable" dynamic-body position="-2 1 -2" data-orig-pos="-2 1 -2" data-potato-pos="1.65 1.6 -2" width="0.3" height="0.3" depth="0.3" color="yellow"></a-box>
+    <a-box class="grabbable" dynamic-body position="-2 1 -3" data-orig-pos="-2 1 -3" data-potato-pos="1.65 1.6 -2" width="0.3" height="0.3" depth="0.3" color="blue"></a-box>
+    
+    <!-- environemnt -->
     <a-grid static-body></a-grid>
-    <!-- <a-box id="floor" static-body position="0 0 -3" width="20" height="0.2" depth="20" color="lightgreen"></a-box> -->
     <a-box id="table" static-body position="-2 0 -2" width="1" height="1.5" depth="5" color="green"></a-box>
     <a-box id="stage" static-body position="2 0 -2" width="1.3" height="1" depth="1.3" color="pink"></a-box>
-    
-    <a-entity id="potato" gltf-model="#potato" position="2 1 -2" rotation="0 90 0"></a-entity>
-    <!-- <a-box id="hat" static-body position="1.65 1.6 -2" width="0.3" height="0.3" depth="0.3" color="cyan"></a-box> -->
-    
-    <a-box class="grabbable" dynamic-body position="-2 1 -1" width="0.3" height="0.3" depth="0.3" color="red"></a-box>
-    <a-box class="grabbable" dynamic-body position="-2 1 -2" width="0.3" height="0.3" depth="0.3" color="yellow"></a-box>
-    <a-box class="grabbable" dynamic-body position="-2 1 -3" width="0.3" height="0.3" depth="0.3" color="blue"></a-box>
 
     <!-- lighting -->
     <a-entity light="type: point; color: #f4f4f4; intensity: 0.2; distance: 0" position="8 10 18"></a-entity>
