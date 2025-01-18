@@ -63,7 +63,7 @@ AFRAME.registerComponent('rewind-grab', {
     this.system.removeConstraint(this.constraint);
     this.constraint = null;
 
-    const physicsComponent = hitEl.components['dynamic-body'];
+    const physicsComponent = hitEl.components['body'];
     physicsComponent.pause();
 
     const hitElCurrentPos = hitEl.getAttribute('position');
@@ -85,7 +85,8 @@ AFRAME.registerComponent('rewind-grab', {
     } else {
       const targetPos = hitEl.getAttribute('data-potato-pos');
       hitEl.setAttribute('position', targetPos);
-      hitEl.setAttribute('rotation', '0 0 0');
+      const targetRotation = hitEl.getAttribute('rotation') || '0 0 0';
+      hitEl.setAttribute('rotation', targetRotation);
     }
 
     this.hitEl = undefined;
@@ -105,9 +106,10 @@ AFRAME.registerComponent('rewind-grab', {
       'dur': '500',
       'startEvents': 'start-rewind-position'
     });
+    const targetRotation = hitEl.getAttribute('rotation') || '0 0 0';
     hitEl.setAttribute('animation__rewind-rotation', {
       'property': 'rotation', 
-      'to': '0 0 0', 
+      'to': targetRotation, 
       'dur': '500',
       'startEvents': 'start-rewind-rotation'
     });

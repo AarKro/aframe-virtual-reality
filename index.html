@@ -46,15 +46,16 @@
     </a-entity>
 
     <!-- potato -->
-    <a-entity id="potato" gltf-model="#potatoModel" position="4 1.75 -2" rotation="0 90 0"></a-entity>
+    <a-entity id="potato" gltf-model="#potatoModel" position="4 0.75 -2" rotation="0 90 0"></a-entity>
     
     <!-- clothing & accessories -->
-    <a-entity class="grabbable" gltf-model="#hatAModel" body="type: dynamic; mass: 5; shape: none;" shape__main="shape: box; halfExtents: 0.2 0.2 0.2; offset: 0 0.08 0" position="-5 1.5 -1" data-orig-pos="-5 1.5 -1" data-potato-pos="3.68 2.3 -2"></a-entity>
+    <a-entity class="grabbable" gltf-model="#hatAModel" body="type: dynamic; mass: 5; shape: none;" shape__main="shape: box; halfExtents: 0.2 0.2 0.2; offset: 0 0.08 0" position="-5 1.5 -1" data-orig-pos="-5 1.5 -1" data-potato-pos="3.68 2.35 -2"></a-entity>
+    <a-entity class="grabbable" gltf-model="#hatBModel" body="type: dynamic; mass: 5; shape: none;" shape__main="shape: box; halfExtents: 0.2 0.12 0.2; offset: 0 0 0" rotation="0 -90 0" position="-5 1.5 -2" data-orig-pos="-5 1.5 -2" data-potato-pos="3.68 1.35 -2"></a-entity>
     
     <!-- environemnt -->
     <a-box id="room" gltf-model="#roomModel" body="type: static; mass: 0; shape: none;" shape__main="shape: box; halfExtents: 10 .5 10; offset: 0 -5.1 0" position="0 4 0" rotation="0 -90 0"></a-box>
-    <a-entity id="table" gltf-model="#tableModel" body="type: static; mass: 0; shape: none;" shape__main="shape: box; halfExtents: 6 1.2 1.2;" position="-5 0 -2" rotation=" 0 90 0"></a-entity>
-    <a-entity id="stage" gltf-model="#stageModel" body="type: static; mass: 0; shape: none;" shape__main="shape: box; halfExtents: 1.5 1.2 1.2;" position="4 0 -2"></a-entity>
+    <a-entity id="table" gltf-model="#tableModel" body="type: static; mass: 0; shape: none;" shape__main="shape: box; halfExtents: 6 1.2 1.2;" position="-5 -1 -2" rotation=" 0 90 0"></a-entity>
+    <a-entity id="stage" gltf-model="#stageModel" body="type: static; mass: 0; shape: none;" shape__main="shape: box; halfExtents: 1.5 1.2 1.2;" position="4 -1 -2"></a-entity>
 
     <!-- lighting -->
     <a-entity light="type: point; color: #f4f4f4; intensity: 0.2; distance: 0" position="8 10 18"></a-entity>
