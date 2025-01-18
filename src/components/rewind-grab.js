@@ -83,7 +83,7 @@ AFRAME.registerComponent('rewind-grab', {
     } else {
       const targetPos = hitEl.getAttribute('data-potato-pos');
       hitEl.setAttribute('position', targetPos);
-      const targetRotation = vector3ToString(hitEl.getAttribute('rotation')) || '0 0 0';
+      const targetRotation = hitEl.getAttribute('data-orig-rotation') || '0 0 0';
       hitEl.setAttribute('rotation', targetRotation);
     }
 
@@ -104,7 +104,7 @@ AFRAME.registerComponent('rewind-grab', {
       'dur': '500',
       'startEvents': 'start-rewind-position'
     });
-    const targetRotation = vector3ToString(hitEl.getAttribute('rotation')) || '0 0 0';
+    const targetRotation = hitEl.getAttribute('data-orig-rotation') || '0 0 0';
     console.log(targetRotation)
     hitEl.setAttribute('animation__rewind-rotation', {
       'property': 'rotation', 
