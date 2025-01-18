@@ -78,7 +78,7 @@ AFRAME.registerComponent('rewind-grab', {
         physicsComponent.play();
       }, 500);
     } else {
-      hitEl.setAttribute('position', '2 1.6 -2');
+      hitEl.setAttribute('position', '1.65 1.6 -2');
       hitEl.setAttribute('rotation', '0 0 0');
     }
 
