@@ -36,8 +36,6 @@ AFRAME.registerComponent('rewind-grab', {
       width: Number(stageWidth),
       depth: Number(stageDepth),
     }
-
-    console.log(this.stage)
   },
 
   pause: function () {
@@ -79,7 +77,7 @@ AFRAME.registerComponent('rewind-grab', {
       hitEl.emit('start-rewind-rotation', null, false);
       setTimeout(() => {
         physicsComponent.play();
-      }, 500);
+      }, 600);
     } else {
       const targetPos = hitEl.getAttribute('data-potato-pos');
       hitEl.setAttribute('position', targetPos);
