@@ -69,8 +69,6 @@ AFRAME.registerComponent('rewind-grab', {
     const hitElCurrentPos = hitEl.getAttribute('position');
     const hitElX = hitElCurrentPos.getComponent(0);
     const hitElZ = hitElCurrentPos.getComponent(2);
-    console.log(this.stage.x, this.stage.z, this.stage.width, this.stage.depth);
-    console.log(hitElX, hitElZ);
     if (
       !(
            (hitElX >= this.stage.x && hitElX <= (this.stage.x + this.stage.width))
@@ -85,7 +83,7 @@ AFRAME.registerComponent('rewind-grab', {
     } else {
       const targetPos = hitEl.getAttribute('data-potato-pos');
       hitEl.setAttribute('position', targetPos);
-      const targetRotation = hitEl.getAttribute('rotation') || '0 0 0';
+      const targetRotation = vector3ToString(hitEl.getAttribute('rotation')) || '0 0 0';
       hitEl.setAttribute('rotation', targetRotation);
     }
 
@@ -106,7 +104,8 @@ AFRAME.registerComponent('rewind-grab', {
       'dur': '500',
       'startEvents': 'start-rewind-position'
     });
-    const targetRotation = hitEl.getAttribute('rotation') || '0 0 0';
+    const targetRotation = vector3ToString(hitEl.getAttribute('rotation')) || '0 0 0';
+    console.log(targetRotation)
     hitEl.setAttribute('animation__rewind-rotation', {
       'property': 'rotation', 
       'to': targetRotation, 
