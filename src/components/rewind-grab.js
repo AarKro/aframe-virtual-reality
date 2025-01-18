@@ -61,6 +61,9 @@ AFRAME.registerComponent('rewind-grab', {
     this.system.removeConstraint(this.constraint);
     this.constraint = null;
 
+    const physicsComponent = hitEl.components['dynamic-body'];
+    physicsComponent.pause();
+
     const hitElCurrentPos = hitEl.getAttribute('position');
     const hitElX = hitElCurrentPos.getComponent(0);
     const hitElZ = hitElCurrentPos.getComponent(2);
@@ -70,12 +73,13 @@ AFRAME.registerComponent('rewind-grab', {
         && (hitElZ >= this.stage.z && hitElZ <= (this.stage.z + this.stage.depth))
       )
     ) {
-      const physicsComponent = hitEl.components['dynamic-body'];
-      physicsComponent.pause();
       hitEl.emit('start-rewind', null, false);
       setTimeout(() => {
         physicsComponent.play();
       }, 500);
+    } else {
+      hitEl.setAttribute('position', '2 1.6 -2');
+      hitEl.setAttribute('rotation', '0 0 0');
     }
 
     this.hitEl = undefined;
