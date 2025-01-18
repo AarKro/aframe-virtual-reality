@@ -81,7 +81,7 @@ AFRAME.registerComponent('rewind-grab', {
     } else {
       const targetPos = hitEl.getAttribute('data-potato-pos');
       hitEl.setAttribute('position', targetPos);
-      const targetRotation = hitEl.getAttribute('data-orig-rotation') || '0 0 0';
+      const targetRotation = hitEl.getAttribute('data-potato-rotation') || '0 0 0';
       hitEl.setAttribute('rotation', targetRotation);
     }
 
