@@ -1,3 +1,3 @@
-# Virtual Reality with AFrame
+# Virtual Reality with A-Frame
 
 [Demo on Github Pages](https://aarkro.github.io/aframe-virtual-reality/)
