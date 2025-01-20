@@ -34,8 +34,8 @@ export const registerRewindGrab = () => {
 
       const stageEl = document.getElementById('stage')
       const stagePos = stageEl.getAttribute('position');
-      const stageWidth = 3;
-      const stageDepth = 3;
+      const stageWidth = 2.2;
+      const stageDepth = 2.2;
       this.stage = {
         x: stagePos.getComponent(0) - (Number(stageWidth) / 2),
         z: stagePos.getComponent(2) - (Number(stageDepth) / 2),

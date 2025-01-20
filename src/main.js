@@ -1,7 +1,7 @@
 import { modelConfig } from "./modelConfig.js";
 import { asCoordinates, coordsToString, patch } from "./utlis.js";
 
-const accessoryStartCoords = asCoordinates(-5, 1.2, -1);
+const accessoryStartCoords = asCoordinates(-5, 1.4, -1);
 
 export const createModels = () => {
   let accessoryCounter = 0;
@@ -9,6 +9,7 @@ export const createModels = () => {
     const el = document.createElement('a-entity');
     el.setAttribute('id', model.id);
     el.setAttribute('gltf-model', `#${model.id}Model`);
+    el.setAttribute('scale', coordsToString(model.scale || {x: 1, y: 1, z: 1}));
 
     switch (model.kind) {
       case 'environment':
