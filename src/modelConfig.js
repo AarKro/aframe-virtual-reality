@@ -35,12 +35,14 @@ export const modelConfig = [
   {
     id: 'hatA',
     kind: 'accessory',
+    accessorySlot: 'hat',
     hitbox: asBox(0.2, 0.2, 0.2, 0, 0.08, 0),
     potatoPos: accessorySlots.hat,
   },
   {
     id: 'hatB',
     kind: 'accessory',
+    accessorySlot: 'hat',
     hitbox: asBox(0.2, 0.12, 0.2),
     potatoPos: accessorySlots.hat,
     rotation: asCoordinates(0, 90, 0),
@@ -49,6 +51,7 @@ export const modelConfig = [
   {
     id: 'glassesRed',
     kind: 'accessory',
+    accessorySlot: 'glasses',
     hitbox: asBox(0.4, 0.15, 0.2),
     potatoPos: accessorySlots.glasses,
     rotation: asCoordinates(0, -90, 0),
@@ -57,6 +60,7 @@ export const modelConfig = [
   {
     id: 'monocleA',
     kind: 'accessory',
+    accessorySlot: 'glasses',
     hitbox: asBox(0.2, 0.15, 0.2),
     potatoPos: patch(accessorySlots.glasses, 0, 0, -0.25),
     rotation: asCoordinates(0, -90, 0),

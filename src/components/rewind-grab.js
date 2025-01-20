@@ -1,3 +1,8 @@
+const accessorySlots = {
+  hat: '',
+  glasses: '',
+}
+
 export const registerRewindGrab = () => {
   AFRAME.registerComponent('rewind-grab', {
     init: function () {
@@ -70,7 +75,7 @@ export const registerRewindGrab = () => {
       const hitElZ = hitElCurrentPos.getComponent(2);
       if (
         !(
-            (hitElX >= this.stage.x && hitElX <= (this.stage.x + this.stage.width))
+             (hitElX >= this.stage.x && hitElX <= (this.stage.x + this.stage.width))
           && (hitElZ >= this.stage.z && hitElZ <= (this.stage.z + this.stage.depth))
         )
       ) {
@@ -80,10 +85,20 @@ export const registerRewindGrab = () => {
           physicsComponent.play();
         }, 600);
       } else {
-        const targetPos = hitEl.getAttribute('data-potato-pos');
-        hitEl.setAttribute('position', targetPos);
-        const targetRotation = hitEl.getAttribute('data-potato-rotation') || '0 0 0';
-        hitEl.setAttribute('rotation', targetRotation);
+        const accessorySlot = hitEl.getAttribute('data-accessory-slot');
+        if (accessorySlots[accessorySlot] !== '') {
+          const el = document.getElementById(accessorySlots[accessorySlot]);
+          el.emit('start-rewind-position', null, false);
+          el.emit('start-rewind-rotation', null, false);
+          setTimeout(() => {
+            const elPhysicsComponent = el.components['body'];
+            elPhysicsComponent.play();
+          }, 600);
+        }
+
+        accessorySlots[accessorySlot] = hitEl.getAttribute('id');
+        hitEl.emit('start-potato-position', null, false);
+        hitEl.emit('start-potato-rotation', null, false);
       }
 
       this.hitEl = undefined;
@@ -96,21 +111,6 @@ export const registerRewindGrab = () => {
       // If we're already grabbing something you can't grab again.
       if (hitEl.is(this.GRABBED_STATE) || !this.grabbing || this.hitEl) { return; }
       
-      const hitElPosSnapshot = hitEl.getAttribute('data-orig-pos');
-      hitEl.setAttribute('animation__rewind-position', {
-        'property': 'position', 
-        'to': hitElPosSnapshot, 
-        'dur': '500',
-        'startEvents': 'start-rewind-position'
-      });
-      const targetRotation = hitEl.getAttribute('data-orig-rotation') || '0 0 0';
-      hitEl.setAttribute('animation__rewind-rotation', {
-        'property': 'rotation', 
-        'to': targetRotation, 
-        'dur': '500',
-        'startEvents': 'start-rewind-rotation'
-      });
-
       hitEl.addState(this.GRABBED_STATE);
       this.hitEl = hitEl;
       this.constraint = new CANNON.LockConstraint(this.el.body, hitEl.body);

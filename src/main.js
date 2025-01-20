@@ -18,12 +18,39 @@ export const createModels = () => {
       case 'accessory':
         const position = coordsToString(patch(accessoryStartCoords, 0, 0, accessoryCounter * -1));
         el.setAttribute('position', position);
-        el.setAttribute('data-orig-pos', position);
-        el.setAttribute('data-potato-pos', coordsToString(model.potatoPos));
-        el.setAttribute('data-orig-rotation', coordsToString(model.rotation));
-        el.setAttribute('data-potato-rotation', coordsToString(model.potatoRotation));
+        el.setAttribute('data-accessory-slot', model.accessorySlot);
         el.setAttribute('body', 'type: dynamic; mass: 5; shape: none;');
         el.classList.add('grabbable');
+
+        // animations
+        el.setAttribute('animation__rewind-position', {
+          'property': 'position', 
+          'to': position, 
+          'dur': '500',
+          'startEvents': 'start-rewind-position'
+        });
+
+        el.setAttribute('animation__rewind-rotation', {
+          'property': 'rotation', 
+          'to': coordsToString(model.rotation), 
+          'dur': '500',
+          'startEvents': 'start-rewind-rotation'
+        });
+
+        el.setAttribute('animation__potato-position', {
+          'property': 'position', 
+          'to': coordsToString(model.potatoPos), 
+          'dur': '500',
+          'startEvents': 'start-potato-position'
+        });
+
+        el.setAttribute('animation__potato-rotation', {
+          'property': 'rotation', 
+          'to': coordsToString(model.potatoRotation), 
+          'dur': '500',
+          'startEvents': 'start-potato-rotation'
+        });
+
         accessoryCounter++;
         break;
       default:
