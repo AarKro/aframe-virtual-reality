@@ -15,12 +15,14 @@ export const createModels = () => {
       case 'environment':
         el.setAttribute('position', coordsToString(model.position));
         el.setAttribute('body', 'type: static; mass: 0; shape: none;');
+        el.setAttribute('shadow', 'cast: true; receive: true');
         break;
       case 'accessory':
         const position = coordsToString(patch(accessoryStartCoords, 0, 0, accessoryCounter * -1));
         el.setAttribute('position', position);
         el.setAttribute('data-accessory-slot', model.accessorySlot);
         el.setAttribute('body', 'type: dynamic; mass: 5; shape: none;');
+        el.setAttribute('shadow', 'cast: true; receive: false');
         el.classList.add('grabbable');
 
         // animations
