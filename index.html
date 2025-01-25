@@ -13,7 +13,7 @@
 </head>
 <body>
 
-  <a-scene physics="debug: false" shadow="enabled: false">
+  <a-scene physics="debug: true" shadow="enabled: false">
     <a-assets id="assets">
       <!-- assets are loaded through js -->
     </a-assets>
@@ -27,12 +27,12 @@
       <!-- camera -->
       <a-entity
         camera
-        position="0 1.6 5"
+        position="0 1.6 0"
         look-controls="pointerLockEnabled: true">
+        <!-- body -->
+        <!-- <a-box body="type: static; mass: 5; shape: none;" shape__main="shape: box; halfExtents: 1 1 1;"></a-box> -->
       </a-entity>
 
-      <!-- body -->
-      <!-- <a-box position="" body="type: dynamic; mass: 5; shape: none;" shape__main="shape: box; halfExtents: 1 1 1;"></a-box> -->
 
       <!-- hands -->
       <a-entity static-body="shape: sphere; sphereRadius: 0.02;" hand-controls="hand: left" sphere-collider="objects: .grabbable;" rewind-grab></a-entity>

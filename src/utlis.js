@@ -1,3 +1,5 @@
+import { accessorySlots } from "./components/rewind-grab.js";
+
 export const vector3ToString = (vector, precision = 2) => {
   return `${vector.getComponent(0).toFixed(precision)} ${vector.getComponent(1).toFixed(precision)} ${vector.getComponent(2).toFixed(precision)}`;
 };
@@ -21,3 +23,7 @@ export const patch = ({x, y, z}, deltaX, deltaY, deltaZ) => ({
   y: y + deltaY,
   z: z + deltaZ,
 });
+
+export const isAccessoryEquiped = (id) => {
+  return Object.values(accessorySlots).some(slot => slot === id);
+}

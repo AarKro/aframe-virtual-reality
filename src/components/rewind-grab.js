@@ -1,4 +1,6 @@
-const accessorySlots = {
+import { isAccessoryEquiped } from "../utlis.js";
+
+export const accessorySlots = {
   hat: '',
   glasses: '',
 }
@@ -115,6 +117,12 @@ export const registerRewindGrab = () => {
       this.hitEl = hitEl;
       this.constraint = new CANNON.LockConstraint(this.el.body, hitEl.body);
       this.system.addConstraint(this.constraint);
+
+      if (isAccessoryEquiped(hitEl.getAttribute('id'))) {
+        const physicsComponent = hitEl.components['body'];
+        hitEl.emit('start-potato-rotation', null, false);
+        physicsComponent.play();
+      }
     }
   });
 };
