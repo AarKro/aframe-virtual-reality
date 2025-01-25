@@ -13,7 +13,7 @@
 </head>
 <body>
 
-  <a-scene physics="debug: false" shadow="enabled: false">
+  <a-scene physics="debug: false" shadow="enabled: true; type: pcfsoft">
     <a-assets id="assets">
       <!-- assets are loaded through js -->
     </a-assets>
@@ -45,9 +45,9 @@
     <!-- accessories and environment models are loaded through js -->
 
     <!-- lighting -->
-    <a-entity light="type: point; castShadow: true; color: #f4f4f4; intensity: 0.2; distance: 0" position="8 10 18"></a-entity>
-    <a-entity light="type: point; castShadow: true; color: #f4f4f4; intensity: 0.6; distance: 0" position="-8 10 -18"></a-entity>
-    <a-entity light="type: ambient; color: #f4f4f4; intensity: 0.4;" position="-8 10 -18"></a-entity>
+    <a-entity light="type: spot; castShadow: true; color: #f4f4f4; intensity: 0.3; distance: 0; shadowCameraVisible: true; shadowMapHeight: 5126; shadowMapWidth: 5126" position="5 5 18"></a-entity>
+    <!-- <a-entity light="type: point; castShadow: true; color: #f4f4f4; intensity: 0.6; distance: 0; shadowCameraVisible: true" position="-3 10 -3"></a-entity> -->
+    <a-entity light="type: ambient; color: #f4f4f4; intensity: 0.6;" position="0 10 0"></a-entity>
   </a-scene>
 
 </body>

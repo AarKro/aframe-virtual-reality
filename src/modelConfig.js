@@ -1,15 +1,17 @@
 import { asBox, asCoordinates, patch } from "./utlis.js";
 
+const potatoCoords = asCoordinates(4, 1.5, 0);
+
 const accessorySlots = {
-  hat: asCoordinates(3.68, 2.05, -2),
-  glasses: asCoordinates(3.2, 1.71, -2),
+  hat: patch(potatoCoords, -0.32, 0.55, 0),
+  glasses: patch(potatoCoords, -0.8, 0.21, 0),
 }
 
 export const modelConfig = [
   {
     id: 'potato',
     kind: 'environment',
-    position: asCoordinates(4, 1.5, -2),
+    position: potatoCoords,
     rotation: asCoordinates(0, 90, 0),
   },
   {
@@ -18,6 +20,31 @@ export const modelConfig = [
     hitbox: asBox(10, 0.5, 10, 0, -5.1, 0),
     position: asCoordinates(0, 4.5, 0),
     rotation: asCoordinates(0, -90, 0),
+  },
+  {
+    id: 'couch',
+    kind: 'environment',
+    position: asCoordinates(0, 0.8, -8),
+    scale: asCoordinates(2, 2, 2),
+  },
+  {
+    id: 'couch_small',
+    kind: 'environment',
+    position: asCoordinates(7, 0.8, -6),
+    scale: asCoordinates(2, 2, 2),
+    rotation: asCoordinates(0, -45, 0),
+  },
+  {
+    id: 'plant',
+    kind: 'environment',
+    position: asCoordinates(-5, 0.9, 3),
+  },
+  {
+    id: 'lamp',
+    kind: 'environment',
+    position: asCoordinates(2, 4.05, -5),
+    scale: asCoordinates(2, 2, 2),
+    rotation: asCoordinates(0, -45, 0),
   },
   // {
   //   id: 'table', // old
@@ -44,7 +71,7 @@ export const modelConfig = [
     id: 'stage',
     kind: 'environment',
     hitbox: asBox(0.88, 0.1, 0.87, -0.02, 0.08, -0.18),
-    position: asCoordinates(4.1, 0.72, -1.75),
+    position: asCoordinates(4.1, 0.72, 0.25),
     scale: asCoordinates(1.3, 1.3, 1.3),
   },
   {
