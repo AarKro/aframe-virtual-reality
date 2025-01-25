@@ -119,8 +119,12 @@ export const registerRewindGrab = () => {
       this.system.addConstraint(this.constraint);
 
       if (isAccessoryEquiped(hitEl.getAttribute('id'))) {
-        const physicsComponent = hitEl.components['body'];
+        const accessorySlot = hitEl.getAttribute('data-accessory-slot');
+        accessorySlots[accessorySlot] = '';
+
         hitEl.emit('start-potato-rotation', null, false);
+
+        const physicsComponent = hitEl.components['body'];
         physicsComponent.play();
       }
     }
