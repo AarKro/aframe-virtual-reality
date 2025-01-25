@@ -113,17 +113,17 @@ export const registerRewindGrab = () => {
       // If we're already grabbing something you can't grab again.
       if (hitEl.is(this.GRABBED_STATE) || !this.grabbing || this.hitEl) { return; }
       
-      hitEl.addState(this.GRABBED_STATE);
-      this.hitEl = hitEl;
-      this.constraint = new CANNON.LockConstraint(this.el.body, hitEl.body);
-      this.system.addConstraint(this.constraint);
-
       if (isAccessoryEquiped(hitEl.getAttribute('id'))) {
         const accessorySlot = hitEl.getAttribute('data-accessory-slot');
         accessorySlots[accessorySlot] = '';
         const physicsComponent = hitEl.components['body'];
         physicsComponent.play();
       }
+
+      hitEl.addState(this.GRABBED_STATE);
+      this.hitEl = hitEl;
+      this.constraint = new CANNON.LockConstraint(this.el.body, hitEl.body);
+      this.system.addConstraint(this.constraint);
     }
   });
 };
