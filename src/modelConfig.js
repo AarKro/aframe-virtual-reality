@@ -118,12 +118,11 @@ export const modelConfig = [
     potatoRotation: asCoordinates(0, 90, 0),
   },
   {
-    id: 'pipe_wood',
-    fileExtension: 'glb',
+    id: 'pipe',
     kind: 'accessory',
     accessorySlot: 'mouth',
     hitbox: asBox(2.5, 1.3, 0.8, -1 ,0, 0),
-    potatoPos: patch(accessorySlots.mouth, 0.05, -0.15, 0.2),
+    potatoPos: patch(accessorySlots.mouth, 0.05, -0.11, 0.2),
     potatoRotation: asCoordinates(0, 210, -20),
     scale: asCoordinates(0.1, 0.1, 0.1),
   }

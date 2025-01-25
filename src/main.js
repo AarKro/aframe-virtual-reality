@@ -1,7 +1,7 @@
 import { modelConfig } from "./modelConfig.js";
 import { asCoordinates, coordsToString, patch } from "./utlis.js";
 
-const accessoryStartCoords = asCoordinates(-5, 1.6, 0);
+const accessoryStartCoords = asCoordinates(-5, 1.6, -0.2);
 
 export const createModels = () => {
   let accessoryCounter = 0;
