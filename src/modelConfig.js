@@ -1,6 +1,6 @@
 import { asBox, asCoordinates, patch } from "./utlis.js";
 
-const potatoCoords = asCoordinates(4.2, 1.5, 0);
+const potatoCoords = asCoordinates(4.3, 1.5, 0);
 
 const accessorySlots = {
   hat: patch(potatoCoords, -0.32, 0.55, 0),
@@ -74,6 +74,14 @@ export const modelConfig = [
     hitbox: asBox(0.88, 0.1, 0.87, 0.2, 0.08, -0.18),
     position: asCoordinates(4.1, 0.62, 0.25),
     scale: asCoordinates(1.3, 1.3, 1.3),
+  },
+  {
+    id: 'chair',
+    fileExtension: 'glb',
+    kind: 'environment',
+    position: asCoordinates(3.5, -0.2, 3),
+    scale: asCoordinates(1.7, 1.7, 1.7),
+    rotation: asCoordinates(0, -125, 0),
   },
   {
     id: 'hatA',
