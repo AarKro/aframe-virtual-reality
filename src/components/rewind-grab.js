@@ -121,9 +121,6 @@ export const registerRewindGrab = () => {
       if (isAccessoryEquiped(hitEl.getAttribute('id'))) {
         const accessorySlot = hitEl.getAttribute('data-accessory-slot');
         accessorySlots[accessorySlot] = '';
-
-        hitEl.emit('start-potato-rotation', null, false);
-
         const physicsComponent = hitEl.components['body'];
         physicsComponent.play();
       }
