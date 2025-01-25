@@ -23,13 +23,16 @@
       id="rig"
       movement-controls="controls: gamepad,keyboard,nipple"
       nipple-controls="mode: static"
-    >
+      >
       <!-- camera -->
       <a-entity
         camera
         position="0 1.6 5"
         look-controls="pointerLockEnabled: true">
       </a-entity>
+
+      <!-- body -->
+      <!-- <a-box position="" body="type: dynamic; mass: 5; shape: none;" shape__main="shape: box; halfExtents: 1 1 1;"></a-box> -->
 
       <!-- hands -->
       <a-entity static-body="shape: sphere; sphereRadius: 0.02;" hand-controls="hand: left" sphere-collider="objects: .grabbable;" rewind-grab></a-entity>
