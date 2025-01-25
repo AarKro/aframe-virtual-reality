@@ -3,6 +3,7 @@ import { isAccessoryEquiped } from "../utlis.js";
 export const accessorySlots = {
   hat: '',
   glasses: '',
+  mouth: '',
 }
 
 export const registerRewindGrab = () => {

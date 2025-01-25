@@ -65,6 +65,10 @@ export const createModels = () => {
     if (model.hitbox) {
       el.setAttribute('shape__main', `shape: ${model.hitbox.shape}; halfExtents: ${coordsToString(model.hitbox.halfExtents)}; offset: ${coordsToString(model.hitbox.offset)}`);
     }
+
+    if (model.material) {
+      el.setAttribute('material', model.material);
+    }
     
     return el;
   });
@@ -79,7 +83,7 @@ export const loadAssets = () => {
   const models = modelConfig.map((model) => {
     const el = document.createElement('a-asset-item');
     el.setAttribute('id', `${model.id}Model`);
-    el.setAttribute('src', `./src/assets/${model.id}.gltf`);
+    el.setAttribute('src', `./src/assets/${model.id}.${model.fileExtension || "gltf"}`);
 
     return el;
   });

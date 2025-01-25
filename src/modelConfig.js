@@ -1,10 +1,11 @@
 import { asBox, asCoordinates, patch } from "./utlis.js";
 
-const potatoCoords = asCoordinates(4, 1.5, 0);
+const potatoCoords = asCoordinates(4.2, 1.5, 0);
 
 const accessorySlots = {
   hat: patch(potatoCoords, -0.32, 0.55, 0),
   glasses: patch(potatoCoords, -0.8, 0.21, 0),
+  mouth: patch(potatoCoords, -1.1, -0.22, 0),
 }
 
 export const modelConfig = [
@@ -37,7 +38,7 @@ export const modelConfig = [
   {
     id: 'plant',
     kind: 'environment',
-    position: asCoordinates(-5, 0.9, 3),
+    position: asCoordinates(-4, 0.9, 3),
   },
   {
     id: 'lamp',
@@ -56,8 +57,8 @@ export const modelConfig = [
   {
     id: 'table',
     kind: 'environment',
-    hitbox: asBox(2.23, 0.28, 0.385, -0.07, 0.1, -0.03),
-    position: asCoordinates(-5, 0.47, -2),
+    hitbox: asBox(2.23, 0.32, 0.385, 0.19, 0.1, -0.03),
+    position: asCoordinates(-5, 0.57, -2),
     scale: asCoordinates(1.2, 1.2, 1.2),
     rotation: asCoordinates(0, 90, 0),
   },
@@ -70,8 +71,8 @@ export const modelConfig = [
   {
     id: 'stage',
     kind: 'environment',
-    hitbox: asBox(0.88, 0.1, 0.87, -0.02, 0.08, -0.18),
-    position: asCoordinates(4.1, 0.72, 0.25),
+    hitbox: asBox(0.88, 0.1, 0.87, 0.2, 0.08, -0.18),
+    position: asCoordinates(4.1, 0.62, 0.25),
     scale: asCoordinates(1.3, 1.3, 1.3),
   },
   {
@@ -107,5 +108,15 @@ export const modelConfig = [
     potatoPos: patch(accessorySlots.glasses, 0, 0, -0.25),
     rotation: asCoordinates(0, -90, 0),
     potatoRotation: asCoordinates(0, 90, 0),
+  },
+  {
+    id: 'pipe_wood',
+    fileExtension: 'glb',
+    kind: 'accessory',
+    accessorySlot: 'mouth',
+    hitbox: asBox(2.5, 1.3, 0.8, -1 ,0, 0),
+    potatoPos: patch(accessorySlots.mouth, 0.05, -0.15, 0.2),
+    potatoRotation: asCoordinates(0, 210, -20),
+    scale: asCoordinates(0.1, 0.1, 0.1),
   }
 ];

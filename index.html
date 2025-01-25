@@ -13,7 +13,7 @@
 </head>
 <body>
 
-  <a-scene physics="debug: false" shadow="enabled: true; type: pcfsoft">
+  <a-scene physics="debug: true" shadow="enabled: true; type: pcfsoft">
     <a-assets id="assets">
       <!-- assets are loaded through js -->
     </a-assets>
@@ -24,14 +24,16 @@
       movement-controls="controls: gamepad,keyboard,nipple"
       nipple-controls="mode: static"
       position="0 0 5"
-    >
+      >
+      <!-- body="type: dynamic; mass: 0; shape: none;"
+      shape__main="shape: box; halfExtents: 0.5 0.5 0.5;" -->
+
       <!-- camera -->
       <a-entity
         camera
         position="0 1.6 0"
-        look-controls="pointerLockEnabled: true">
-        
-
+        look-controls="pointerLockEnabled: true"
+      >
         <!-- body -->
         <!-- <a-box ></a-box> -->
       </a-entity>
