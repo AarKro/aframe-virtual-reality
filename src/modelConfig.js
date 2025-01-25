@@ -24,14 +24,14 @@ export const modelConfig = [
   {
     id: 'couch',
     kind: 'environment',
-    position: asCoordinates(0, 0.8, -8),
-    scale: asCoordinates(2, 2, 2),
+    position: asCoordinates(0, 0.6, -8),
+    scale: asCoordinates(1.5, 1.5, 1.5),
   },
   {
     id: 'couch_small',
     kind: 'environment',
-    position: asCoordinates(7, 0.8, -6),
-    scale: asCoordinates(2, 2, 2),
+    position: asCoordinates(7, 0.6, -6),
+    scale: asCoordinates(1.5, 1.5, 1.5),
     rotation: asCoordinates(0, -45, 0),
   },
   {
@@ -42,8 +42,8 @@ export const modelConfig = [
   {
     id: 'lamp',
     kind: 'environment',
-    position: asCoordinates(2, 4.05, -5),
-    scale: asCoordinates(2, 2, 2),
+    position: asCoordinates(2, 3, -5),
+    scale: asCoordinates(1.5, 1.5, 1.5),
     rotation: asCoordinates(0, -45, 0),
   },
   // {
@@ -57,8 +57,8 @@ export const modelConfig = [
     id: 'table',
     kind: 'environment',
     hitbox: asBox(2.23, 0.28, 0.385, -0.07, 0.1, -0.03),
-    position: asCoordinates(-5, 0.7, -2),
-    scale: asCoordinates(1.7, 1.7, 1.7),
+    position: asCoordinates(-5, 0.47, -2),
+    scale: asCoordinates(1.2, 1.2, 1.2),
     rotation: asCoordinates(0, 90, 0),
   },
   // {
